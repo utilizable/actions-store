@@ -17,4 +17,4 @@ on:
 
 jobs:
   building_docker_github: 
-    uses: ./building_docker_github.yml@develop
+    uses: ./.github/workflows/building_docker_github.yml@develop
