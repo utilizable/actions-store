@@ -1,5 +1,5 @@
 # building.yml
-name: building 
+name: building_docker
 
 # Allow repository modyfication;
 permissions:
@@ -18,4 +18,4 @@ on:
 jobs:
 
   github: 
-    uses: ./building/docker/github/github.yml
+    uses: ./building_docker_github.yml

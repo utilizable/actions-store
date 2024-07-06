@@ -1,4 +1,4 @@
-name: minor
+name: tagging_semver_minor
 
 on:
   workflow_call:
