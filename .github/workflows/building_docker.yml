@@ -16,6 +16,5 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  github: 
-    uses: ./building_docker_github.yml
+  building_docker_github: 
+    uses: ./building_docker_github.yml@develop

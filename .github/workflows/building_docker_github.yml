@@ -1,5 +1,5 @@
 # github.yml 
-name: github
+name: building_docker_github
 
 on:
   # Allow to re-use this jobs;
@@ -12,7 +12,7 @@ env:
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
-  build-and-push-image:
+  building_docker_github:
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
