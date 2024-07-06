@@ -5,8 +5,7 @@ description: ''
 inputs:
   token:
     description: ''
-    required: false 
-    default: ${{ .github.token }} 
+    required: true
   context:
     description: ''
     required: false
