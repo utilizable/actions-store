@@ -24,5 +24,6 @@ jobs:
       - uses: ./.github/actions/building/docker/github      
         with:
           token: "${{ secrets.PAT || github.token }}"
-          context: "./path/to/dockerfile"
+            #context: "./path/to/dockerfile"
+          context: "./testing/building/"
 
