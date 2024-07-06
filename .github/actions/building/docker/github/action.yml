@@ -5,10 +5,12 @@ description: ''
 inputs:
   token:
     description: ''
-    required: true
+    required: false 
+    default: ${{ .github.token }} 
   context:
     description: ''
     required: false
+    default: '.'
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 runs:

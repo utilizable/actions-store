@@ -1,5 +1,5 @@
 # building.yml
-name: building_docker
+name: Building Docker
 
 # Allow repository modyfication;
 permissions:
@@ -17,15 +17,12 @@ on:
 
 jobs:
 
-  # -----------------
-  # SEMVER MAJOR
-  # -----------------
-  build_docker_github:
+  github:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/building/docker/github      
-        with:
-          token: "${{ github.token }}"
-          context: "./testing/building/"
+        #with:
+        #  token: "${{ github.token }}"
+        #  context: "./testing/building/"
 
