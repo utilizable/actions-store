@@ -27,4 +27,5 @@ jobs:
       - uses: ./.github/actions/building/docker/github      
         with:
           token: "${{ github.token }}"
+          context: "./testing/building/"
 

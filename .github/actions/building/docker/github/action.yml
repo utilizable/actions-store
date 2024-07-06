@@ -6,6 +6,9 @@ inputs:
   token:
     description: ''
     required: true
+  context:
+    description: ''
+    required: false
 
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 runs:
@@ -33,7 +36,7 @@ runs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
       with:
-        context: .
+        context: ${{ inputs.context }}
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
