@@ -9,7 +9,7 @@ permissions:
 on:
   # Allow to re-use this jobs;   
   # Pass Private Access Token to allow 
-  # create new-workflow for tag
+  # create new-workflow for new tag
   workflow_call:
     secrets:
       PAT:
