@@ -2,7 +2,7 @@ name: minor
 description: ''
 
 inputs:
-  PAT:
+  token:
     description: ''
     required: true
 
@@ -11,7 +11,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
       with:
-        token: "${{ inputs.PAT || github.token }}"
+        token: "${{ inputs.token || github.token }}"
 
     - name: Bump version
       shell: bash
