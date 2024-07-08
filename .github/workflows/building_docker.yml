@@ -19,11 +19,10 @@ on:
         type: string
         default: "${{ inputs.context }}/Dockerfile"
         description: ''
-    secretes:
-      token:
-        type: string
-        default: "${{ github.token }}"
+    secrets:
+      PAT:
         description: ''
+        required: false
 
   # Trigger on each push;
   push:
@@ -31,7 +30,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   github:
     runs-on: ubuntu-latest
     steps:
