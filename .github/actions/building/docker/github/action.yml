@@ -38,7 +38,7 @@ runs:
       run: | 
         echo ${{ inputs.context }}; 
         echo ${{ inputs.token }}; 
-        echo ${{ inputs.file || format('{0}/{1}', inputs.context, 'Dockerfile') }}; 
+        echo ${{ inputs.file || format('{0}{1}', inputs.context, 'Dockerfile') }}; 
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
