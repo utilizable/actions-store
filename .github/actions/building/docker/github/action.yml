@@ -4,14 +4,17 @@ description: ''
 
 inputs:
   token:
-    description: ''
+    description: "GitHub Token used to authenticate against a repository for Git context (default ${{ github.token }})"
     required: true
+    default: '' 
   context:
-    description: ''
+    description: "Build's context is the set of files located in the specified PATH or URL (default Git context)"
     required: false
-  file: 
-    description: ''
+    default: './'
+  file:
+    description: "Path to the Dockerfile. (default {context}/Dockerfile)"
     required: false
+    default: './Dockerfile'
 
 runs:
   using: composite

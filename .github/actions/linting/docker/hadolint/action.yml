@@ -4,7 +4,7 @@ description: ''
 
 inputs:
   file:
-    description: ''
+    description: "Path to the Dockerfile. (default {context}/Dockerfile)"
     required: true
 
 runs:
