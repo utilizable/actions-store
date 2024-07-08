@@ -10,6 +10,21 @@ permissions:
 on:
   # Allow to re-use this jobs;
   workflow_call:
+    inputs:
+      context:
+        type: string
+        default: '.'
+        description: ''
+      file:
+        type: string
+        default: "${{ inputs.context }}/Dockerfile"
+        description: ''
+    secretes:
+      token:
+        type: string
+        default: "${{ github.token }}"
+        description: ''
+
   # Trigger on each push;
   push:
   # Triger manualy;
@@ -22,7 +37,6 @@ jobs:
     steps:
       - uses: utilizable/github-actions/.github/actions/building/docker/github@develop
         with:
-          token: "${{ secrets.PAT || github.token }}"
-            #context: "./path/to/dockerfile"
-          context: "./testing/building/"
-
+          token: "${{ secrets.PAT }}"
+          context: ${{ inputs.context }} 
+          file: ${{ inputs.file }}
