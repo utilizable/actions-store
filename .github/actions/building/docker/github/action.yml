@@ -40,7 +40,7 @@ runs:
       run: | 
         echo ${{ inputs.context }}; 
         echo ${{ inputs.token }}; 
-        echo ${{ inputs.file }}; 
+        echo ${{ inputs.file || (inputs.context + "Dockerfile") }}; 
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
