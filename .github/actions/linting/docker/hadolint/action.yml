@@ -1,0 +1,17 @@
+# hadolint.yml 
+name: liting_docker_hadolint
+description: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Lint Dockerfile
+      shell: bash
+      run: |
+        docker run --rm -i -e \
+          HADOLINT_IGNORE=DL3008,DL4006 \
+          hadolint/hadolint < ${{ inputs.dockerfile }}
+

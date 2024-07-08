@@ -31,14 +31,6 @@ runs:
       uses: docker/metadata-action@v5
       with:
         images: ghcr.io/${{ github.repository }}
-        
-    - name: Extract metadata (tags, labels) for Docker
-      id: test 
-      shell: bash
-      run: | 
-        echo ${{ inputs.context }}; 
-        echo ${{ inputs.token }}; 
-        echo ${{ inputs.file || format('{0}{1}', inputs.context, 'Dockerfile') }}; 
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6

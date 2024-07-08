@@ -10,26 +10,23 @@ on:
   # Allow to re-use this jobs;   
   # Pass Private Access Token to allow 
   # create new-workflow for new tag
-  workflow_call:
-    secrets:
-      token:
-        required: false 
+  # workflow_call:
         
   # Trigger minor update;
   # Trigger patch update;
   # Trigger on all branches;
   # Trigger on each branch-push;
-  #push:
-  #  branches:
-  #    - '*' 
-  # 
-  ## Triger manualy;
-  #workflow_dispatch:
+  push:
+    branches:
+      - '*' 
+   
+  # Triger manualy;
+  workflow_dispatch:
 
 jobs:
 
   # -----------------
-  # SEMVER MAJOR
+  # Major X.0.0 
   # -----------------
   major:
     # Restrict to manual startup; 
@@ -43,7 +40,7 @@ jobs:
           token: ${{ secrets.token }}
   
   # -----------------
-  # SEMVER MINOR
+  # Minor 0.X.0 
   # -----------------
   minor:
     # Restrict to push startup; 
@@ -57,7 +54,7 @@ jobs:
         token: ${{ secrets.token }}
       
   # -----------------
-  # SEMVER PATCH
+  # Patch 0.0.X 
   # -----------------
   patch:
     # Restrict to the fix branch; 
