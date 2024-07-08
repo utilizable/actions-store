@@ -18,12 +18,13 @@ on:
   # Trigger minor update;
   # Trigger patch update;
   # Trigger on all branches;
-  push:
-    branches:
-      - '*' 
-   
-  # Triger manualy;
-  workflow_dispatch:
+  # Trigger on each branch-push;
+  #push:
+  #  branches:
+  #    - '*' 
+  # 
+  ## Triger manualy;
+  #workflow_dispatch:
 
 jobs:
 
