@@ -13,11 +13,9 @@ on:
     inputs:
       context:
         type: string
-        default: './'
         description: ''
       file:
         type: string
-        default: "${{ inputs.context }}/Dockerfile"
         description: ''
     secrets:
       token:

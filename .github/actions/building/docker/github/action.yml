@@ -9,11 +9,9 @@ inputs:
   context:
     description: ''
     required: false
-    default: '.'
   file: 
     description: ''
     required: false
-    default: '.'
 
 runs:
   using: composite
