@@ -6,7 +6,12 @@ inputs:
   token:
     description: ''
     required: true
+    default: ${{ github.token }}
   context:
+    description: ''
+    required: false
+    default: '.'
+  file: 
     description: ''
     required: false
     default: '.'
@@ -38,8 +43,7 @@ runs:
       uses: docker/build-push-action@v6
       with:
         context: ${{ inputs.context }}
+        file: ${{ inputs.file }}
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-
-
