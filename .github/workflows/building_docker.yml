@@ -19,10 +19,11 @@ on:
         type: string
         default: "${{ inputs.context }}/Dockerfile"
         description: ''
-    secrets:
-      PAT:
+      token:
+        type: string
         description: ''
         required: false
+        default: ${{ github.token }}
 
   # Trigger on each push;
   push:
@@ -35,6 +36,6 @@ jobs:
     steps:
       - uses: utilizable/github-actions/.github/actions/building/docker/github@develop
         with:
-          token: "${{ secrets.PAT }}"
+          token: "${{ inputs.token }}"
           context: ${{ inputs.context }} 
           file: ${{ inputs.file }}
