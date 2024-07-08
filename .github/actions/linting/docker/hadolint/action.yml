@@ -2,6 +2,11 @@
 name: liting_docker_hadolint
 description: ''
 
+inputs:
+  file:
+    description: ''
+    required: true
+
 runs:
   using: composite
   steps:
@@ -13,5 +18,5 @@ runs:
       run: |
         docker run --rm -i -e \
           HADOLINT_IGNORE=DL3008,DL4006 \
-          hadolint/hadolint < ${{ inputs.dockerfile }}
+          hadolint/hadolint < ${{ inputs.file }}
 
