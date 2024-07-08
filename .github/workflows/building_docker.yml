@@ -20,8 +20,7 @@ jobs:
   github:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/building/docker/github      
+      - uses: utilizable/github-actions/.github/actions/building/docker/github@develop
         with:
           token: "${{ secrets.PAT || github.token }}"
             #context: "./path/to/dockerfile"
