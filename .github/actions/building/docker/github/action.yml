@@ -18,6 +18,7 @@ inputs:
 
 runs:
   using: composite
+  permissions: write-all
   steps:
     - name: Checkout repository
       uses: actions/checkout@v4
