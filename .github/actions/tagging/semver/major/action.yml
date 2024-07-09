@@ -11,7 +11,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
       with:
-        token: "${{ inputs.token || github.token }}"
+        token: "${{ inputs.token }}"
 
     - name: Bump version
       shell: bash
