@@ -17,6 +17,8 @@ runs:
       shell: bash
       run: |
         docker run --rm -i -e \
-          HADOLINT_IGNORE=DL3008,DL4006 \
+          HADOLINT_IGNORE=\
+            DL3008,\ 
+            DL4006,\
           hadolint/hadolint < ${{ inputs.file }}
 
