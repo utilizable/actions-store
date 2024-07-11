@@ -6,8 +6,9 @@ on:
   # Trigger patch on default ref;
   push:
     branches:
-      - '**'
-      - '*'
+      - '*'         # matches every branch that doesn't contain a '/'
+      - 'fix/*'     # matches every branch containing a single '/'
+      - '**'        # matches every branch
    
   # Trigger major on default ref;
   workflow_dispatch:
