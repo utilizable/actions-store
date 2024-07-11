@@ -28,7 +28,7 @@ runs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
       with:
-        platforms: linux/amd64
+        platforms: linux/amd64, linux/38
         driver: docker
         version: v0.8.0
         
