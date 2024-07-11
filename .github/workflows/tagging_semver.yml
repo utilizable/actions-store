@@ -6,7 +6,8 @@ on:
   # Trigger patch on default ref;
   push:
     branches:
-      - '*' 
+      - '**'
+      - '*'
    
   # Trigger major on default ref;
   workflow_dispatch:
