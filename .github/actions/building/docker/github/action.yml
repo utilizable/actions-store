@@ -22,6 +22,9 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
       
@@ -45,6 +48,7 @@ runs:
         DOCKER_BUILDKIT: 1
         COMPOSE_DOCKER_CLI_BUILD: 1 
       with:
+        no-cache: true
         context: ${{ inputs.context }}
         file: ${{ inputs.file }}
         push: true
