@@ -41,6 +41,9 @@ runs:
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
+      env:
+        DOCKER_BUILDKIT: 1
+        COMPOSE_DOCKER_CLI_BUILD: 1 
       with:
         context: ${{ inputs.context }}
         file: ${{ inputs.file }}
