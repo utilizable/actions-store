@@ -31,8 +31,8 @@ runs:
         driver-opts: |
           image=moby/buildkit:master
           network=host
-          driver=docker
-          platforms=linux/amd64,linux/38
+        driver: docker
+        platforms: linux/amd64
         
     - name: Log in to the Container registry
       uses: docker/login-action@v3
