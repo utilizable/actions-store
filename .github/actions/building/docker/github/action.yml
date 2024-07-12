@@ -47,12 +47,10 @@ runs:
         
       - name: Build Docker image
         shell: bash
-        env:
-          DOCKER_BUILDKIT: 0
         run: |
           tag=$(echo '${{ steps.meta.outputs.tags }}' | jq -r '.[0]')
           cd ${{ inputs.context }};
-          docker build -t "$tag" -f ${{ inputs.file }} .
+          DOCKER_BUILDKIT=0 docker build -t "$tag" -f ${{ inputs.file }} .
           docker push "$tag"
         
 #    - name: Build and push Docker image
