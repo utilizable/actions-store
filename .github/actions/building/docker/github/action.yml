@@ -49,7 +49,7 @@ runs:
       shell: bash
       run: |
         cd ${{ inputs.context }};
-        docker build -t ${{ steps.meta.outputs.tags }} -f ${{ inputs.file }} .
+        docker build -t ${{ steps.meta.outputs.tags[0] }} -f ${{ inputs.file }} .
         docker push ${{ steps.meta.outputs.tags }}
         
 #    - name: Build and push Docker image
