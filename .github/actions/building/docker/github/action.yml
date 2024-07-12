@@ -49,8 +49,8 @@ runs:
       shell: bash
       run: |
         cd ${{ inputs.context }};
-        docker build -t {{ fromJSON(steps.meta.outputs.tags)[0] }}" -f ${{ inputs.file }} .
-        docker push ${{ steps.meta.outputs.tags }}
+        docker build -t "${{ fromJSON(steps.meta.outputs.tags)[0] }}" -f ${{ inputs.file }} .
+        docker push "${{ fromJSON(steps.meta.outputs.tags)[0] }}"
         
 #    - name: Build and push Docker image
 #      uses: docker/build-push-action@v6
