@@ -45,13 +45,13 @@ runs:
       with:
         images: ghcr.io/${{ github.repository }}
         
-      - name: Build Docker image
-        shell: bash
-        run: |
-          tag=$(echo '${{ steps.meta.outputs.tags }}' | jq -r '.[0]')
-          cd ${{ inputs.context }};
-          DOCKER_BUILDKIT=0 docker build -t "$tag" -f ${{ inputs.file }} .
-          docker push "$tag"
+    - name: Build Docker image
+      shell: bash
+      run: |
+        tag=$(echo '${{ steps.meta.outputs.tags }}' | jq -r '.[0]')
+        cd ${{ inputs.context }};
+        DOCKER_BUILDKIT=0 docker build -t "$tag" -f ${{ inputs.file }} .
+        docker push "$tag"
         
 #    - name: Build and push Docker image
 #      uses: docker/build-push-action@v6
