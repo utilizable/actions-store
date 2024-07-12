@@ -51,7 +51,7 @@ runs:
       shell: bash
       run: |
         cd ${{ inputs.context }};
-        DOCKER_BUILDKIT=0 docker build -t "${{ steps.meta.outputs.tags }}" -f "${{ inputs.file }}" .
+        DOCKER_BUILDKIT=0 docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
         docker push "$tag"
         
 #    - name: Build and push Docker image
