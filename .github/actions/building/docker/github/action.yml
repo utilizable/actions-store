@@ -44,25 +44,25 @@ runs:
       uses: docker/metadata-action@v5
       with:
         images: ghcr.io/${{ github.repository }}
-        flavor: |
-          latest=false
+#        flavor: |
+#          latest=false
           
-    - name: Build Docker image
-      shell: bash
-      run: |
-        cd ${{ inputs.context }};
-        DOCKER_BUILDKIT=0 docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
-        docker push "${{ steps.meta.outputs.tags }}"
+#    - name: Build Docker image
+#      shell: bash
+#      run: |
+#        cd ${{ inputs.context }};
+#        DOCKER_BUILDKIT=0 docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
+#        docker push "${{ steps.meta.outputs.tags }}"
         
-#    - name: Build and push Docker image
-#      uses: docker/build-push-action@v6
-#      env:
-#        DOCKER_BUILDKIT: 1
-#        COMPOSE_DOCKER_CLI_BUILD: 1 
-#      with:
-#        no-cache: true
-#        context: ${{ inputs.context }}
-#        file: ${{ inputs.file }}
-#        push: true
-#        tags: ${{ steps.meta.outputs.tags }}
-#        labels: ${{ steps.meta.outputs.labels }}
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      env:
+        DOCKER_BUILDKIT: 0
+        COMPOSE_DOCKER_CLI_BUILD: 0 
+      with:
+        no-cache: true
+        context: ${{ inputs.context }}
+        file: ${{ inputs.file }}
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
