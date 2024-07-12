@@ -44,13 +44,14 @@ runs:
       uses: docker/metadata-action@v5
       with:
         images: ghcr.io/${{ github.repository }}
-        
+        flavor: |
+          latest=false
+          
     - name: Build Docker image
       shell: bash
       run: |
-        tag=$(echo '${{ steps.meta.outputs.tags }}' | jq -r '.[0]')
         cd ${{ inputs.context }};
-        DOCKER_BUILDKIT=0 docker build -t "$tag" -f ${{ inputs.file }} .
+        DOCKER_BUILDKIT=0 docker build -t "${{ steps.meta.outputs.tags }}" -f "${{ inputs.file }}" .
         docker push "$tag"
         
 #    - name: Build and push Docker image
