@@ -48,7 +48,8 @@ runs:
     - name: Build Docker image
       shell: bash
       run: |
-        docker build -t ${{ steps.meta.outputs.tags }} .
+        cd ${{ inputs.context }};
+        docker build -t ${{ steps.meta.outputs.tags }} -f ${{ inputs.file }} .
         docker push ${{ steps.meta.outputs.tags }}
         
 #    - name: Build and push Docker image
