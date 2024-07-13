@@ -49,9 +49,8 @@ runs:
         DOCKER_BUILDKIT: 0
       run: |
         tags=${{ steps.meta.outputs.tags }}
-      #echo "$tags" | head -n 2
         echo "$tags" | head -n 1
-        
+      
 #docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
 #docker push "${{ steps.meta.outputs.tags }}"
         
