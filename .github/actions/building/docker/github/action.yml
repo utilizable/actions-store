@@ -48,8 +48,8 @@ runs:
       uses: docker/metadata-action@v5
       with:
         images: ghcr.io/${{ github.repository }}
-        flavor: |
-          latest=false
+        #flavor: |
+        #  latest=false
           
     - name: Build Docker image
       shell: bash
