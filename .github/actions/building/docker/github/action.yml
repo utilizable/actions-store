@@ -18,7 +18,7 @@ inputs:
   buildkit:
     description: "Enable docker buildkit"
     required: false
-    default: "true"
+    default: "false"
 
 runs:
   using: composite
