@@ -48,6 +48,8 @@ runs:
       env:
         DOCKER_BUILDKIT: 0
       run: |
+        echo "${{ steps.meta.outputs.json }}" | jq '.tags[0]'
+        # ---
         # build
         docker build -t docker -f ./Dockerfile .
         # retag
