@@ -21,9 +21,7 @@ inputs:
     default: "false"
 
 runs:
-  using: composite
-  env:
-    DOCKER_BUILDKIT: 0    
+  using: composite 
   steps:
     - name: Checkout repository
       uses: actions/checkout@v4
