@@ -61,7 +61,7 @@ runs:
         cd ${{ inputs.context }};
         tags="${{ steps.meta.outputs.tags }}"
         first_tag=$(echo "$tags" | head -n 1)
-        echo "First tag is: $first_tag"        
+        echo ${first_tag}       
 #docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
 #docker push "${{ steps.meta.outputs.tags }}"
         
