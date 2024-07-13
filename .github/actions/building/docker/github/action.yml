@@ -22,6 +22,8 @@ inputs:
 
 runs:
   using: composite
+  env:
+    DOCKER_BUILDKIT: 0    
   steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -45,8 +47,8 @@ runs:
       shell: bash
       working-directory: "${{ inputs.context }}"
       if: ${{ inputs.buildkit == 'false' }}
-      env:
-        DOCKER_BUILDKIT: 0
+      #env:
+      #  DOCKER_BUILDKIT: 0
       run: |
         tags="$(echo "${{ steps.meta.outputs.tags.json }}")"
         tag_semver=$(echo "$tags" | head -n 1)
