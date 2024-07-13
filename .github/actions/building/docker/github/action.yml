@@ -53,13 +53,13 @@ runs:
           
     - name: Build Docker image
       shell: bash
-      working-directory: "${{ inputs.context }}"
+      #working-directory: "${{ inputs.context }}"
       #if: ${{ inputs.buildkit == 'false' }}
       env:
         DOCKER_BUILDKIT: 0
       run: |
         cd ${{ inputs.context }};
-        tags="${{ steps.meta.outputs.tags }}"
+        tags=${{ steps.meta.outputs.tags }}
         first_tag="$(echo "$tags" | head -n 1)"
         echo ${first_tag}       
         
