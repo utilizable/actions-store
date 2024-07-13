@@ -50,7 +50,7 @@ runs:
       run: |
         # extract metadata
         tags=$(jq -r '.tags[]' <<< '${{ steps.meta.outputs.json }}')
-        labels=$(jq -r '.labels | to_entries[] | "\(.key)=\(.value)"' <<< '${{ steps.meta.outputs.json }}')
+        labels=$(jq -r '.labels | to_entries[] | "\(.key)=\"\(.value)\""' <<< '${{ steps.meta.outputs.json }}')
         
         # append labels to final docker image
         echo "${labels//\//\\\/}" | while read -r label; do 
