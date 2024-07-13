@@ -49,10 +49,14 @@ runs:
         DOCKER_BUILDKIT: 0
       run: |
         tags=${{ steps.meta.outputs.tags }}
-        echo "$tags" | head -n 0
-      
-#docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
-#docker push "${{ steps.meta.outputs.tags }}"
+        tag=$(echo "$tags" | head -n 1)
+        latest=$(echo "$tags" | head -n 2)
+        
+        docker build -t "${latest} -f ./Dockerfile .
+        docker tag "${latest}" "${tag}"
+        
+        docker push "${latest}"
+        docker push "${tag}"
         
 #    - name: Build and push Docker image
 #      uses: docker/build-push-action@v6
