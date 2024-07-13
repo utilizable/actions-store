@@ -54,7 +54,7 @@ runs:
     - name: Build Docker image
       shell: bash
       working-directory: "${{ inputs.context }}"
-      if: ${{ inputs.buildkit == false }}
+      if: ${{ inputs.buildkit == 'false' }}
       env:
         DOCKER_BUILDKIT: 0
       run: |
