@@ -48,16 +48,19 @@ runs:
       env:
         DOCKER_BUILDKIT: 0
       run: |
-        # extract tags
-        # :latest
-        # :semver
+        # extract metadata
         tags=$(jq -r '.tags[]' <<< '${{ steps.meta.outputs.json }}')
+        labels=$(jq -r '.labels | to_entries[] | "\(.key)=\(.value)"' <<< '${{ steps.meta.outputs.json }}')
         
+        # append labels to final docker image
+        echo "${labels//\//\\\/}" | while read -r label; do 
+          sed -i "/^FROM/a LABEL $label" ./Dockerfile;
+        done
+
         # build 
         docker build -t docker -f ./Dockerfile .
         
-        # retag
-        # push
+        # retag & push
         echo "$tags" | while read -r tag; do
           docker tag docker ${tag}
           docker push ${tag}
