@@ -45,21 +45,17 @@ runs:
       shell: bash
       working-directory: "${{ inputs.context }}"
       if: ${{ inputs.buildkit == 'false' }}
-      #env:
-      #  DOCKER_BUILDKIT: 0
+      env:
+        DOCKER_BUILDKIT: 0
       run: |
-        tags="$(echo "${{ steps.meta.outputs.json }}")"
-        tag_semver=$(echo "$tags" | head -n 1)
-        echo "${tag_semver}"
-        
-        tag_latest=$(echo "$tags" | head -n 2)
-        echo "${tag_latest}"
-        
-        docker build -t "${tag_semver}" -f ./Dockerfile .
-        docker tag "${tag_semver}" "${tag_latest}"
-        
-        docker push "${tag_semver}"
-        docker push "${tag_latest}"
+        # build
+        docker build -t docker -f ./Dockerfile .
+        # retag
+        docker tag docker "$(echo "${{ steps.meta.outputs.json }}" | jq '.tags[0]' )"
+        docker tag docker "$(echo "${{ steps.meta.outputs.json }}" | jq '.tags[1]' )"
+        # push
+        docker push "$(echo "${{ steps.meta.outputs.json }}" | jq '.tags[0]' )"
+        docker push "$(echo "${{ steps.meta.outputs.json }}" | jq '.tags[1]' )"
         
 #    - name: Build and push Docker image
 #      uses: docker/build-push-action@v6
