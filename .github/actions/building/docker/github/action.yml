@@ -48,12 +48,16 @@ runs:
       env:
         DOCKER_BUILDKIT: 0
       run: |
-        tags=$(jq '.tags[]' <<< '${{ steps.meta.outputs.json }}')
-        # ---
-        # build
+        # extract tags
+        # :latest
+        # :semver
+        tags=$(jq -r '.tags[]' <<< '${{ steps.meta.outputs.json }}')
+        
+        # build 
         docker build -t docker -f ./Dockerfile .
         
-        # retag&push
+        # retag
+        # push
         echo "$tags" | while read -r tag; do
           docker tag docker ${tag}
           docker push ${tag}
