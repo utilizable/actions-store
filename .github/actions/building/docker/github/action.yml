@@ -48,15 +48,15 @@ runs:
       env:
         DOCKER_BUILDKIT: 0
       run: |
-        tags=${{ steps.meta.outputs.tags }}
-        tag=$(echo "$tags" | head -n 1)
-        latest=$(echo "$tags" | head -n 2)
+        tags="${{ steps.meta.outputs.tags }}"
+        tag_semver=$(echo "$tags" | head -n 1)
+        tag_latest=$(echo "$tags" | head -n 2)
         
-        docker build -t "${latest} -f ./Dockerfile .
-        docker tag "${latest}" "${tag}"
+        docker build -t "${tag_semver}" -f ./Dockerfile .
+        docker tag "${tag_semver}" "${tag_latest}"
         
-        docker push "${latest}"
-        docker push "${tag}"
+        docker push "${tag_semver}"
+        docker push "${tag_latest}"
         
 #    - name: Build and push Docker image
 #      uses: docker/build-push-action@v6
