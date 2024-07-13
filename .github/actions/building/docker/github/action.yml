@@ -59,8 +59,9 @@ runs:
         DOCKER_BUILDKIT: 0
       run: |
         cd ${{ inputs.context }};
-        echo "${{ steps.meta.outputs.tags }}" | head -n 1
-        
+        tags="${{ steps.meta.outputs.tags }}"
+        first_tag=$(echo "$tags" | head -n 1)
+        echo "First tag is: $first_tag"        
 #docker build -t "${{ steps.meta.outputs.tags }}" -f ./Dockerfile .
 #docker push "${{ steps.meta.outputs.tags }}"
         
