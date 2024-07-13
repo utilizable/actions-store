@@ -50,7 +50,7 @@ runs:
       #env:
       #  DOCKER_BUILDKIT: 0
       run: |
-        tags="$(echo "${{ steps.meta.outputs.tags.json }}")"
+        tags="$(echo "${{ steps.meta.outputs.json }}")"
         tag_semver=$(echo "$tags" | head -n 1)
         echo "${tag_semver}"
         
