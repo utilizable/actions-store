@@ -48,7 +48,7 @@ runs:
       env:
         DOCKER_BUILDKIT: 0
       run: |
-        tags="${{ steps.meta.outputs.tags }}"
+        tags="$(echo ${{ steps.meta.outputs.tags }})"
         tag_semver=$(echo "$tags" | head -n 1)
         echo "${tag_semver}"
         
