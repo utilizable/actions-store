@@ -39,6 +39,12 @@ runs:
       with:
         images: ghcr.io/${{ github.repository }}
 
+    - name: Test
+      shell: bash
+      run: |
+        echo ${{ needs.prepare.outputs.dockerfiledir }}
+        echo ${{ needs.prepare.outputs.dockerfilepath }}
+
     - name: Build and push Docker image - (LEGACY)
       if: ${{ inputs.buildkit == 'false' }}
       shell: bash
