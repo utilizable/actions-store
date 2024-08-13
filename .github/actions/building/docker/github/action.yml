@@ -42,8 +42,8 @@ runs:
     - name: Test
       shell: bash
       run: |
-        echo ${{ needs.prepare.outputs.dockerfiledir }}
-        echo ${{ needs.prepare.outputs.dockerfilepath }}
+        echo ${{ inputs.file }}
+        echo ${{ inputs.context }}
 
     - name: Build and push Docker image - (LEGACY)
       if: ${{ inputs.buildkit == 'false' }}
