@@ -45,8 +45,6 @@ runs:
       working-directory: "${{ inputs.context }}"
       env:
         DOCKER_BUILDKIT: 0
-      with:
-        dockerfilepath: "${{ inputs.file }}"
       run: |
         # extract metadata
         tags=$(jq -r '.tags[]' <<< '${{ steps.meta.outputs.json }}')
@@ -54,11 +52,11 @@ runs:
 
         # append labels to final docker image
         echo "${labels//\//\\\/}" | while read -r label; do 
-          sed -i "/^FROM/a LABEL $label" '${{ inputs.dockerfilepath }}';
+          sed -i "/^FROM/a LABEL $label" '${{ inputs.file }}';
         done
 
         # build 
-        docker build -t docker -f '${{ inputs.dockerfilepath }}' .
+        docker build -t docker -f '${{ inputs.file }}' .
         
         # retag & push; latest and tagged version
         echo "$tags" | while read -r tag; do
