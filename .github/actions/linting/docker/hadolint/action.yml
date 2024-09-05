@@ -6,6 +6,9 @@ inputs:
   file:
     description: "Path to the Dockerfile. (default {context}/Dockerfile)"
     required: true
+  rules:
+    description: "Hadolint comma separated list of rule codes which will be ignored."
+    required: true
 
 runs:
   using: composite
@@ -17,5 +20,5 @@ runs:
       shell: bash
       run: |
         docker run --rm -i -e \
-          HADOLINT_IGNORE=DL3008,DL4006,SC2086,DL3003 \
+          HADOLINT_IGNORE=DL3008,DL4006,SC2086,DL3003,${{ inputs.rules }} \
           hadolint/hadolint < ${{ inputs.file }}
