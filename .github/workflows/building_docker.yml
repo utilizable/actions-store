@@ -29,7 +29,7 @@ jobs:
         name: Find Dockerfile
         id: find-dockerfile
         run: |
-          DOCKERFILE_PATH=$(find ${PWD} -name "Dockerfile.*");
+          DOCKERFILE_PATH=$(find ${PWD}/ -name "Dockerfile.*" -not -path '*/.*');
           if [ -z "${DOCKERFILE_PATH}" ]; then exit 1; fi
           echo "DOCKERFILE_PATH=${DOCKERFILE_PATH}" >> $GITHUB_OUTPUT
           echo "DOCKERFILE_DIR=${DOCKERFILE_PATH/\/Dockerfile.*}" >> $GITHUB_OUTPUT
