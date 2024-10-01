@@ -19,6 +19,10 @@ inputs:
     description: "Enable docker buildkit"
     required: false
     default: 'true'
+  build-args:
+    description: "List of build-time variables"
+    required: false
+    default: '' 
 
 runs:
   using: composite 
@@ -74,3 +78,4 @@ runs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        build-args: ${{ inputs.build-args }}
